@@ -13,7 +13,7 @@ pipeline {
             }
         }
         stage('deploy') {
-        agent (label 'practice01')
+        agent {label 'practice01'}
             parallel {
                 stage('Deploy to Server 1') {
                     steps {
