@@ -1,28 +1,30 @@
 pipeline {
-  agent {
-  label 'practice01'
-};
-  stages {
- parallel {
-      stage ('Build') {
-        steps {
-          echo "This is Build stage"
-          sh 'sleep 5'
-        }
-      }
-    stage ('deploy') {
+    agent any
 
-        steps {
-          echo "This is deploy stage"
-          sh 'sleep 5'
+    stages {
+        stage('prebuild') {
+            steps {
+                echo 'Preparing for build...'
+            }
         }
-      }
-stage ('test') {
-        steps {
-          echo "This is test stage"
-          sh 'sleep 5'
+        stage('build') {
+            steps {
+                echo 'Building...'
+            }
         }
-      }
-}
-   }
+        stage('deploy') {
+            parallel {
+                stage('Deploy to Server 1') {
+                    steps {
+                        echo 'Deploying to Server 1...'
+                    }
+                }
+                stage('Deploy to Server 2') {
+                    steps {
+                        echo 'Deploying to Server 2...'
+                    }
+                }
+            }
+        }
+    }
 }
