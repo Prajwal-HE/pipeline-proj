@@ -3,6 +3,7 @@ pipeline {
   label 'practice01'
 };
   stages {
+ parallel {
       stage ('Build') {
         steps {
           echo "This is Build stage"
@@ -10,7 +11,7 @@ pipeline {
         }
       }
     stage ('deploy') {
- parallel {
+
         steps {
           echo "This is deploy stage"
           sh 'sleep 5'
