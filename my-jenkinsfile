@@ -1,7 +1,7 @@
 pipeline {
   agent any;
   stages {
-      stage { 'prebuild' } {
+      stage ('prebuild') {
         steps {
           echo "This is Build stage"
         }
