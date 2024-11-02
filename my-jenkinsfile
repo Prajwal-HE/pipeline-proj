@@ -10,6 +10,7 @@ pipeline {
         }
       }
     stage ('deploy') {
+ parallel {
         steps {
           echo "This is deploy stage"
           sh 'sleep 5'
@@ -21,6 +22,6 @@ stage ('test') {
           sh 'sleep 5'
         }
       }
-
+}
    }
 }
