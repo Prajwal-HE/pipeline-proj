@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'master'}
+    agent any;
 
     stages {
         stage('prebuild') {
@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stage('build') {
-         agent {label 'practice01'}
+        
             steps {
                 echo 'Building...'
             }
